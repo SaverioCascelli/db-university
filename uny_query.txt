@@ -1,0 +1,46 @@
+1. Studenti nati nel  1990
+
+SELECT *
+FROM `students`
+WHERE YEAR(`date_of_birth`) = 1990;
+
+2. Corsi che valgono piu di 10 crediti
+
+SELECT *
+FROM `courses`
+WHERE `cfu` > 10
+
+3. Studenti che hanno piu di 30 anni
+
+SELECT *
+FROM `students`
+WHERE `date_of_birth` < DATE_SUB(NOW(), INTERVAL 30 YEAR);
+
+4.Corsi del primo semestre del primo anno di un qulasiasi corso di laurea
+
+SELECT *
+FROM `courses`
+WHERE `period` LIKE 'I %' AND `year` = 1;
+
+5.appelli d'esame che avvengono dopo le 14:00 del 20/06/2020
+
+SELECT *
+FROM `exams`
+WHERE DATE(date) = '2020-06-20' and TIME(hour) > '14-00-00';
+
+6. tutti i corsi di laure amagistrale
+
+SELECT *
+FROM `degrees`
+WHERE `level` = 'magistrale';
+
+7. Da quanti dipartimenti e' composta l'universita'
+
+SELECT COUNT(id) as 'dipartimenti'
+FROM `departments`;
+
+8. Quanti sono[6i insegnati che non hannoun numero di telefono?
+
+SELECT COUNT(id)
+FROM `teachers`
+WHERE `phone` IS NULL;
